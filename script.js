@@ -50,10 +50,32 @@ function validatePostalCode(input) {
 }
 
 function validatePassword(input) {
-    
+    if (!input.value.trim()) {
+        showError(input, 'Password is required');
+        return false;
+    }
+    else if (input.value.length < 8) {
+        showError(input, 'Password must be at least 8 characters');
+        return false;
+    }
+    else {
+        clearError(input);
+        return true;
+    }
 }
 function validateConfirmPassword(input) {
-
+    if (!input.value.trim()) {
+        showError(input, 'Password confirmation is required');
+        return false;
+    }
+    else if (input.value !== password.value) {
+        showError(input, 'Passwords do not match');
+        return false;
+    }
+    else {
+        clearError(input);
+        return true;
+    }
 }
 
 // --- Error Handling ---
