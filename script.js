@@ -34,7 +34,19 @@ function validateCountry(input) {
 }
 
 function validatePostalCode(input) {
-
+    const postalPattern = /^[0-9]{5}(-[0-9]{4})?$/; // e.g., 12345 or 12345-6789
+    if (!input.value.trim()) {
+        showError(input, 'Postal Code is required');
+        return false;
+    }
+    else if (!postalPattern.test(input.value.trim())) {
+        showError(input, 'Enter a valid postal code');
+        return false;
+    }
+    else {
+        clearError(input);
+        return true;
+    }
 }
 
 function validatePassword(input) {
