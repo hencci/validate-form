@@ -25,12 +25,17 @@ function validateConfirmPassword(input) {
 
 }
 
+// --- Error Handling ---
 function showError(input, message) {
-
+    const errorSpan = input.parentElement.querySelector('.error-message');
+    errorSpan.textContent = message;
+    input.classList.add('invalid');
 }
 
 function clearError(input) {
-
+    const errorSpan = input.parentElement.querySelector('.error-message');
+    errorSpan.textContent = '';
+    input.classList.remove('invalid');
 }
 
 function validateField(event) {
