@@ -118,3 +118,21 @@ country.addEventListener('blur', validateField);
 postal.addEventListener('blur', validateField);
 password.addEventListener('blur', validateField);
 confirmPassword.addEventListener('blur', validateField);
+
+// --- Validate Entire Form on Submit ---
+form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const isEmailValid = validateEmail(email);
+    const isCountryValid = validateCountry(country);
+    const isPostalValid = validatePostalCode(postal);
+    const isPasswordValid = validatePassword(password);
+    const isConfirmPasswordValid = validateConfirmPassword(confirmPassword);
+
+    if (isEmailValid && isCountryValid && isPostalValid && isPasswordValid && isConfirmPasswordValid) {
+        highFive.style.display = 'block';
+    }
+    else {
+        highFive.style.display = 'none';
+        alert('Please fix the errors before submitting');
+    }
+});
