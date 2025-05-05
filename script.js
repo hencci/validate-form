@@ -7,7 +7,19 @@ const confirmPassword = document.getElementById('confirmPassword');
 const highFive = document.getElementById('highFive');
 
 function validateEmail(input) {
-
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!input.value.trim()) {
+        showError(input, 'Email is required');
+        return false;
+    }
+    else if (!emailPattern.test(input.value.trim())) {
+        showError(input, 'Email is not valid');
+        return false;
+    }
+    else {
+        clearError(input);
+        return true;
+    }
 }
 
 function validateCountry(input) {
