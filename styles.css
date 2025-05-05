@@ -1,0 +1,30 @@
+/* Basic form styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+input {
+    display: block;
+    width: 300px;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    height: 1.2rem;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+
+input:valid {
+    border: 2px solid green;
+}  
