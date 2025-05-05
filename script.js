@@ -63,6 +63,7 @@ function validatePassword(input) {
         return true;
     }
 }
+
 function validateConfirmPassword(input) {
     if (!input.value.trim()) {
         showError(input, 'Password confirmation is required');
@@ -92,5 +93,28 @@ function clearError(input) {
 }
 
 function validateField(event) {
-    
+    switch (event.target.id) {
+        case 'email':
+            validateEmail(event.target);
+            break;
+        case 'country':
+            validateCountry(event.target);
+            break;
+        case 'postal':
+            validatePostalCode(event.target);
+            break;
+        case 'password':
+            validatePassword(event.target);
+            break;
+        case 'confirmPassword':
+            validateConfirmPassword(event.target);
+            break;
+    }
 }
+
+// Attach event listeners
+email.addEventListener('blur', validateField);
+country.addEventListener('blur', validateField);
+postal.addEventListener('blur', validateField);
+password.addEventListener('blur', validateField);
+confirmPassword.addEventListener('blur', validateField);
