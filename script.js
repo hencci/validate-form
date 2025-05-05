@@ -23,7 +23,14 @@ function validateEmail(input) {
 }
 
 function validateCountry(input) {
-
+    if (!input.value.trim()) {
+        showError(input, 'Country is required');
+        return false;
+    }
+    else {
+        clearError(input);
+        return true;
+    }
 }
 
 function validatePostalCode(input) {
