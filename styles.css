@@ -4,6 +4,16 @@ body {
     margin: 20px;
 }
 
+h1 {
+    text-align: center;
+}
+
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .form-group {
     margin-bottom: 15px;
 }
