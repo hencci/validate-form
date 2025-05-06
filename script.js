@@ -6,9 +6,13 @@ const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPassword');
 const highFive = document.getElementById('highFive');
 
+function isEmpty(input) {
+    return input.value.trim() === '';
+}
+
 function validateEmail(input) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!input.value.trim()) {
+    if (isEmpty(input)) {
         showError(input, 'Email is required');
         return false;
     }
@@ -23,7 +27,7 @@ function validateEmail(input) {
 }
 
 function validateCountry(input) {
-    if (!input.value.trim()) {
+    if (isEmpty(input)) {
         showError(input, 'Country is required');
         return false;
     }
@@ -35,12 +39,12 @@ function validateCountry(input) {
 
 function validatePostalCode(input) {
     const postalPattern = /^[0-9]{5}(-[0-9]{4})?$/; // e.g., 12345 or 12345-6789
-    if (!input.value.trim()) {
+    if (isEmpty(input)) {
         showError(input, 'Postal Code is required');
         return false;
     }
     else if (!postalPattern.test(input.value.trim())) {
-        showError(input, 'Enter a valid postal code');
+        showError(input, 'Enter a valid postal code (12345 or 12345-6789)');
         return false;
     }
     else {
@@ -50,7 +54,7 @@ function validatePostalCode(input) {
 }
 
 function validatePassword(input) {
-    if (!input.value.trim()) {
+    if (isEmpty(input)) {
         showError(input, 'Password is required');
         return false;
     }
@@ -65,7 +69,7 @@ function validatePassword(input) {
 }
 
 function validateConfirmPassword(input) {
-    if (!input.value.trim()) {
+    if (isEmpty(input)) {
         showError(input, 'Password confirmation is required');
         return false;
     }
@@ -109,6 +113,8 @@ function validateField(event) {
         case 'confirmPassword':
             validateConfirmPassword(event.target);
             break;
+        default:
+            return true;
     }
 }
 
