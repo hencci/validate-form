@@ -58,8 +58,20 @@ function validatePassword(input) {
         showError(input, 'Password is required');
         return false;
     }
-    else if (input.value.length < 8) {
-        showError(input, 'Password must be at least 8 characters');
+
+    const passwordPatterns = [
+        { test: /.{8,}/, message: 'at least 8 characters' },
+        { test: /[a-z]/, message: 'at least 1 lowercase letter' },
+        { test: /[A-Z]/, message: 'at least 1 uppercase letter' },
+        { test: /[0-9]/, message: 'at least 1 number' },
+        { test: /[!@#$%^&*(),.?":{}|<>]/, message: 'At least 1 special character' }
+    ];
+
+    const failedPatterns = passwordPatterns.filter(passwordPattern => !passwordPattern.test.test(input.value));
+
+    if (failedPatterns.length > 0) {
+        const messages = failedPatterns.map(passwordPattern => passwordPattern.message);
+        showError(input, `Password must have: ${messages.join(', ')}`);
         return false;
     }
     else {
